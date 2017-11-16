@@ -88,3 +88,10 @@ function admin_enqueue_scripts( $hook_suffix ) {
 function remove_about_box() {
 	remove_meta_box( 'pll-about-box', 'settings_page_mlang', 'normal' );
 }
+
+/**
+ * Prevents the Lingotek class from initializing.
+ *
+ * @since 0.0.1
+ */
+define( 'PLL_LINGOTEK_AD', false );
