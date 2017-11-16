@@ -3,6 +3,7 @@
 namespace WSUWP\Polylang\Extended;
 
 add_filter( 'pll_settings_modules', 'WSUWP\Polylang\Extended\filter_settings' );
+add_filter( 'pll_settings_tabs', 'WSUWP\Polylang\Extended\filter_menu', 11 );
 
 /**
  * Removes settings that require the pro version
@@ -28,4 +29,19 @@ function filter_settings( $modules ) {
 	$modules = array_diff( $modules, $unset_modules );
 
 	return $modules;
+}
+
+/**
+ * Removes the LingoTek menu item.
+ *
+ * @since 0.0.1
+ *
+ * @param array
+ *
+ * @return array
+ */
+function filter_menu( $tabs ) {
+	unset( $tabs['lingotek'] );
+
+	return $tabs;
 }
