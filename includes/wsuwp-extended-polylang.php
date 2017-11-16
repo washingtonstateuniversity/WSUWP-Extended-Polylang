@@ -4,6 +4,7 @@ namespace WSUWP\Polylang\Extended;
 
 add_filter( 'pll_settings_modules', 'WSUWP\Polylang\Extended\filter_settings' );
 add_filter( 'pll_settings_tabs', 'WSUWP\Polylang\Extended\filter_menu', 11 );
+add_filter( 'pll_predefined_flags', 'WSUWP\Polylang\Extended\filter_flags' );
 
 /**
  * Removes settings that require the pro version
@@ -44,4 +45,17 @@ function filter_menu( $tabs ) {
 	unset( $tabs['lingotek'] );
 
 	return $tabs;
+}
+
+/**
+ * Returns an empty array for flag values.
+ *
+ * @since 0.0.1
+ *
+ * @param array
+ *
+ * @return array
+ */
+function filter_flags( $flags ) {
+	return array();
 }
