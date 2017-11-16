@@ -6,6 +6,7 @@ add_filter( 'pll_settings_modules', 'WSUWP\Polylang\Extended\filter_settings' );
 add_filter( 'pll_settings_tabs', 'WSUWP\Polylang\Extended\filter_menu', 11 );
 add_filter( 'pll_predefined_flags', 'WSUWP\Polylang\Extended\filter_flags' );
 add_action( 'admin_enqueue_scripts', 'WSUWP\Polylang\Extended\admin_enqueue_scripts' );
+add_action( 'load-toplevel_page_mlang', 'WSUWP\Polylang\Extended\remove_about_box', 11 );
 
 /**
  * Removes settings that require the pro version
@@ -77,4 +78,13 @@ function admin_enqueue_scripts( $hook_suffix ) {
 	if ( 'toplevel_page_mlang' === $hook_suffix ) {
 		wp_enqueue_style( 'wsuwp-polylang-extended', plugins_url( 'css/admin-languages.css', dirname( __FILE__ ) ) );
 	}
+}
+
+/**
+ * Removes the About Polylang box from the "Languages" dashboard page.
+ *
+ * @since 0.0.1
+ */
+function remove_about_box() {
+	remove_meta_box( 'pll-about-box', 'settings_page_mlang', 'normal' );
 }
