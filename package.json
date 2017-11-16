@@ -1,0 +1,14 @@
+{
+  "name": "wsuwp-extended-polylang",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/washingtonstateuniversity/wsuwp-extended-polylang"
+  },
+  "author": "washingtonstateuniversity",
+  "license": "GPL-2.0+",
+  "devDependencies": {
+    "grunt": "~1.0.1",
+    "grunt-phpcs": "^0.4.0"
+  }
+}

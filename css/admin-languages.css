@@ -1,0 +1,6 @@
+.form-wrap label[for="flag_list-button"],
+#flag_list-button,
+#flag_list-button + p,
+.column-flag {
+	display: none;
+}
