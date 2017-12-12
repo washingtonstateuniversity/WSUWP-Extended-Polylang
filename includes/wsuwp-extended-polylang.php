@@ -7,6 +7,8 @@ add_filter( 'pll_settings_tabs', 'WSUWP\Polylang\Extended\filter_menu', 11 );
 add_filter( 'pll_predefined_flags', 'WSUWP\Polylang\Extended\filter_flags' );
 add_action( 'admin_enqueue_scripts', 'WSUWP\Polylang\Extended\admin_enqueue_scripts' );
 add_action( 'load-toplevel_page_mlang', 'WSUWP\Polylang\Extended\remove_about_box', 11 );
+add_filter( 'pll_get_post_types', 'WSUWP\Polylang\Extended\post_types' );
+add_action( 'init', 'WSUWP\Polylang\Extended\disable_media_support' );
 
 /**
  * Removes settings that require the pro version
@@ -95,3 +97,30 @@ function remove_about_box() {
  * @since 0.0.1
  */
 define( 'PLL_LINGOTEK_AD', false );
+
+/**
+ * Disables translation support for the attachement post type.
+ *
+ * @since 0.0.2
+ *
+ * @param array $post_types Post types with Polylang support.
+ *
+ * @return array
+ */
+function post_types( $post_types ) {
+	unset( $post_types['attachment'] );
+
+	return $post_types;
+}
+
+/**
+ * Disables the media support option.
+ *
+ * @since 0.0.2
+ */
+function disable_media_support() {
+	$polylang_options = get_option( 'polylang' );
+	$polylang_options['media_support'] = false;
+
+	update_option( 'polylang', $polylang_options );
+}
