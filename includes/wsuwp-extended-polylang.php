@@ -100,7 +100,7 @@ function remove_about_box() {
 define( 'PLL_LINGOTEK_AD', false );
 
 /**
- * Disables translation support for the attachement post type.
+ * Disables translation support for the attachment post type.
  *
  * @since 0.0.2
  *
