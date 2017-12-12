@@ -9,6 +9,7 @@ add_action( 'admin_enqueue_scripts', 'WSUWP\Polylang\Extended\admin_enqueue_scri
 add_action( 'load-toplevel_page_mlang', 'WSUWP\Polylang\Extended\remove_about_box', 11 );
 add_filter( 'pll_get_post_types', 'WSUWP\Polylang\Extended\post_types' );
 add_action( 'init', 'WSUWP\Polylang\Extended\disable_media_support' );
+add_filter( 'pll_get_taxonomies', 'WSUWP\Polylang\Extended\taxonomies' );
 
 /**
  * Removes settings that require the pro version
@@ -123,4 +124,25 @@ function disable_media_support() {
 	$polylang_options['media_support'] = false;
 
 	update_option( 'polylang', $polylang_options );
+}
+
+/**
+ * Disables translations management for University Taxonomies.
+ *
+ * @since 0.0.2
+ *
+ * @param array $taxonomies Taxonomies that can be allowed to have translation support.
+ *
+ * @return array
+ */
+function taxonomies( $taxonomies ) {
+	$unset_taxonomies = array(
+		'wsuwp_university_category',
+		'wsuwp_university_location',
+		'wsuwp_university_org',
+	);
+
+	$taxonomies = array_diff( $taxonomies, $unset_taxonomies );
+
+	return $taxonomies;
 }
