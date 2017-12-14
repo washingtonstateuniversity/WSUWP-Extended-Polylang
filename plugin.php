@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WSUWP Extended Polylang
-Version: 0.0.1
+Version: 0.0.2
 Description: A WordPress plugin to apply modifications to Polylang defaults.
 Author: washingtonstateuniversity, philcable
 Author URI: https://web.wsu.edu/
