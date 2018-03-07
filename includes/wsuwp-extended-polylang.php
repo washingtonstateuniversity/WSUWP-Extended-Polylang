@@ -9,13 +9,6 @@ namespace WSUWP\Polylang\Extended;
  */
 define( 'PLL_LINGOTEK_AD', false );
 
-/**
- * Disable Polylang's WPML compatibility mode.
- *
- * @since 0.0.3
- */
-define( 'PLL_WPML_COMPAT', false );
-
 add_filter( 'pll_settings_modules', 'WSUWP\Polylang\Extended\filter_settings' );
 add_filter( 'pll_settings_tabs', 'WSUWP\Polylang\Extended\filter_menu', 11 );
 add_filter( 'pll_predefined_flags', 'WSUWP\Polylang\Extended\filter_flags' );
