@@ -2,6 +2,20 @@
 
 namespace WSUWP\Polylang\Extended;
 
+/**
+ * Prevents the Lingotek class from initializing.
+ *
+ * @since 0.0.1
+ */
+define( 'PLL_LINGOTEK_AD', false );
+
+/**
+ * Disable Polylang's WPML compatibility mode.
+ *
+ * @since 0.0.3
+ */
+define( 'PLL_WPML_COMPAT', false );
+
 add_filter( 'pll_settings_modules', 'WSUWP\Polylang\Extended\filter_settings' );
 add_filter( 'pll_settings_tabs', 'WSUWP\Polylang\Extended\filter_menu', 11 );
 add_filter( 'pll_predefined_flags', 'WSUWP\Polylang\Extended\filter_flags' );
@@ -91,20 +105,6 @@ function admin_enqueue_scripts( $hook_suffix ) {
 function remove_about_box() {
 	remove_meta_box( 'pll-about-box', 'settings_page_mlang', 'normal' );
 }
-
-/**
- * Prevents the Lingotek class from initializing.
- *
- * @since 0.0.1
- */
-define( 'PLL_LINGOTEK_AD', false );
-
-/**
- * Disable Polylang's WPML compatibility mode.
- *
- * @since 0.0.3
- */
-define( 'PLL_WPML_COMPAT', false );
 
 /**
  * Disables translation support for the attachment post type.
