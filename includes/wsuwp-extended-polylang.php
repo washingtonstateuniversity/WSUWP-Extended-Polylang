@@ -100,6 +100,13 @@ function remove_about_box() {
 define( 'PLL_LINGOTEK_AD', false );
 
 /**
+ * Disable Polylang's WPML compatibility mode.
+ *
+ * @since 0.0.3
+ */
+define( 'PLL_WPML_COMPAT', false );
+
+/**
  * Disables translation support for the attachment post type.
  *
  * @since 0.0.2
