@@ -2,6 +2,13 @@
 
 namespace WSUWP\Polylang\Extended;
 
+/**
+ * Prevents the Lingotek class from initializing.
+ *
+ * @since 0.0.1
+ */
+define( 'PLL_LINGOTEK_AD', false );
+
 add_filter( 'pll_settings_modules', 'WSUWP\Polylang\Extended\filter_settings' );
 add_filter( 'pll_settings_tabs', 'WSUWP\Polylang\Extended\filter_menu', 11 );
 add_filter( 'pll_predefined_flags', 'WSUWP\Polylang\Extended\filter_flags' );
@@ -10,6 +17,7 @@ add_action( 'load-toplevel_page_mlang', 'WSUWP\Polylang\Extended\remove_about_bo
 add_filter( 'pll_get_post_types', 'WSUWP\Polylang\Extended\post_types' );
 add_action( 'init', 'WSUWP\Polylang\Extended\disable_media_support' );
 add_filter( 'pll_get_taxonomies', 'WSUWP\Polylang\Extended\taxonomies' );
+add_filter( 'tribe_events_category_slug', 'WSUWP\Polylang\Extended\tribe_events_category_slug' );
 
 /**
  * Removes settings that require the pro version
@@ -93,13 +101,6 @@ function remove_about_box() {
 }
 
 /**
- * Prevents the Lingotek class from initializing.
- *
- * @since 0.0.1
- */
-define( 'PLL_LINGOTEK_AD', false );
-
-/**
  * Disables translation support for the attachment post type.
  *
  * @since 0.0.2
@@ -145,4 +146,17 @@ function taxonomies( $taxonomies ) {
 	$taxonomies = array_diff( $taxonomies, $unset_taxonomies );
 
 	return $taxonomies;
+}
+
+/**
+ * Returns the string to be used as the event category slug.
+ *
+ * @since 0.0.3
+ *
+ * @param string $slug
+ *
+ * @return string
+ */
+function tribe_events_category_slug( $slug ) {
+	return 'category';
 }
